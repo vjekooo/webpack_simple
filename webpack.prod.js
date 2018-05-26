@@ -6,24 +6,27 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 
-const port = process.env.PORT || 3000
-
 module.exports = merge(common, {
     mode: 'production',
     output: {
         filename: '[name].[chunkhash].js',
     },
     module: {
-        rules: []
+        rules: [
+            {
+                test: /\.scss$/,
+                use:  [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'postcss-loader',
+                    'sass-loader'
+                ]
+            }
+        ]
     },
     devtool: 'source-map',
-    devServer: {
-        contentBase: './dist',
-        open: true,
-        hot: true,
-        port: port,
-    },
     plugins: [
+        new CleanWebpackPlugin('dist', {} ),
         new MiniCssExtractPlugin({
             filename: "[name]-[contenthash].css"
         })

@@ -8,9 +8,7 @@ module.exports = {
         main: './src/js/index.js'
     },
     output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: '[name].[hash].js',
-        publicPath: '/'
+        path: path.resolve(__dirname, 'dist')
     },
     module: {
         rules: [
@@ -20,20 +18,10 @@ module.exports = {
                 use: {
                     loader: "babel-loader"
                 }
-            },
-            {
-                test: /\.scss$/,
-                use:  [
-                    'style-loader',
-                    'css-loader',
-                    'postcss-loader',
-                    'sass-loader'
-                ]
             }
         ]
     },
     plugins: [
-        new CleanWebpackPlugin('dist', {} ),
         new HtmlWebpackPlugin({
             inject: true,
             hash: true,

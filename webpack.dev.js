@@ -14,7 +14,17 @@ module.exports = merge(common, {
         filename: '[name].[hash].js',
     },
     module: {
-        rules: []
+        rules: [
+            {
+                test: /\.scss$/,
+                use:  [
+                    'style-loader',
+                    'css-loader',
+                    'postcss-loader',
+                    'sass-loader'
+                ]
+            }
+        ]
     },
     devtool: 'inline-source-map',
     devServer: {
@@ -24,9 +34,6 @@ module.exports = merge(common, {
         port: port
     },
     plugins: [
-        new MiniCssExtractPlugin({
-            filename: "[name]-[hash].css"
-        }),
         new webpack.NamedModulesPlugin(),
         new webpack.HotModuleReplacementPlugin()
     ]
