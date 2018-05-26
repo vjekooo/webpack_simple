@@ -1,14 +1,13 @@
 const path = require('path')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
+const commonPaths = require('./common-paths')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 
 module.exports = {
     entry: {
-        main: './src/js/index.js'
+        main: [`${commonPaths.appEntry}/js/index.js`]
     },
     output: {
-        path: path.resolve(__dirname, 'dist')
+        path: commonPaths.outputPath
     },
     module: {
         rules: [
@@ -18,7 +17,38 @@ module.exports = {
                 use: {
                     loader: "babel-loader"
                 }
-            }
+            },
+            {
+				test: /\.(gif|png|jpe?g|svg)$/i,
+				include: `${commonPaths.appEntry}/assets/images`,
+				use: [
+					{
+						loader: 'file-loader',
+						options: {
+							name: 'assets/images/[hash:8]-[name].[ext]'
+						}
+					},
+					{
+						loader: 'image-webpack-loader',
+						options: {
+							mozjpeg: {
+								progressive: true,
+								quality: 70
+							},
+							optipng: {
+								optimizationLevel: 7
+							},
+							pngquant: {
+								quality: '65-90',
+								speed: 4
+							},
+							gifsicle: {
+								interlaced: false,
+							}
+						}
+					}
+				]
+			}
         ]
     },
     plugins: [

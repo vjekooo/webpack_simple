@@ -2,14 +2,14 @@ const path = require('path')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const common = require('./webpack.common.js')
-const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 module.exports = merge(common, {
     mode: 'production',
     output: {
-        filename: '[name].[chunkhash].js',
+        filename: 'js/[name].[chunkhash].js',
     },
     module: {
         rules: [
@@ -28,7 +28,7 @@ module.exports = merge(common, {
     plugins: [
         new CleanWebpackPlugin('dist', {} ),
         new MiniCssExtractPlugin({
-            filename: "[name]-[contenthash].css"
+            filename: 'style/[name]-[contenthash].css'
         })
     ]
 })

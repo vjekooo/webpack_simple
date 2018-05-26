@@ -1,5 +1,15 @@
 
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+  
 body {
-    background-color: salmon;
-    display: flex;
+    background-color: lightblue;
+}
+  
+.container {
+    display: grid;
+    justify-content: center;
 }
