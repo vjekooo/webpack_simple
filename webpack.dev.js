@@ -4,7 +4,6 @@ const merge = require('webpack-merge')
 const common = require('./webpack.common.js')
 const commonPaths = require('./common-paths')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 const port = process.env.PORT || 3000
@@ -29,7 +28,8 @@ module.exports = merge(common, {
     },
     devtool: 'inline-source-map',
     devServer: {
-        contentBase: './dist',
+        contentBase: path.join(__dirname, 'src'),
+        watchContentBase: true,
         open: true,
         hot: true,
         port: port
