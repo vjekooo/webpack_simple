@@ -9,7 +9,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 module.exports = merge(common, {
     mode: 'production',
     output: {
-        filename: 'js/[name].[chunkhash].js',
+        filename: 'js/[name].[chunkhash].js'
     },
     module: {
         rules: [
@@ -17,7 +17,7 @@ module.exports = merge(common, {
                 test: /\.scss$/,
                 use:  [
                     MiniCssExtractPlugin.loader,
-                    'css-loader',
+                    'css-loader?url=false',
                     'postcss-loader',
                     'sass-loader'
                 ]

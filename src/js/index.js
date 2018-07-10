@@ -1,6 +1,6 @@
 
 import '../scss/main.scss'
-import '../assets/images/fry.jpg'
+import '../assets/images/pl_exp.jpg'
 
 console.log('test')
 
