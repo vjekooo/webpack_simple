@@ -1,4 +1,5 @@
 const path = require('path')
+const webpack = require('webpack')
 const commonPaths = require('./common-paths')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
@@ -55,6 +56,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: 'Naslov',
             template: './src/index.html'
-        })
+		}),
+		new webpack.ProgressPlugin()
     ]
 }

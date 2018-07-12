@@ -1,10 +1,8 @@
+
 const path = require('path')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const common = require('./webpack.common.js')
-const commonPaths = require('./common-paths')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 const port = process.env.PORT || 3000
 
